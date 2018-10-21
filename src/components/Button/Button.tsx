@@ -29,8 +29,6 @@ const StyledButton = styled.button<{ fullWidth: boolean }>`
   box-shadow: none;
   border: 3px solid transparent;
   color: ${Colors.white};
-  display: flex;
-  justify-content: center;
   cursor: pointer;
 
   &:focus {

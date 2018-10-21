@@ -29,15 +29,15 @@ export function Login() {
 }
 
 const Wrapper = styled.div`
-  position: absolute;
+  margin: 0 auto;
   padding: 36px;
   width: 100%;
   background-color: ${Colors.almostBlack};
   min-height: 100%;
   box-sizing: border-box;
 
-  @media (min-width: 480px) {
-    min-height: initial;
+  @media all and (min-width: 480px) {
+    min-height: auto;
     width: 400px;
     height: 600px;
     border-bottom-left-radius: 50px;

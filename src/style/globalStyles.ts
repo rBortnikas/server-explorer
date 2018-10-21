@@ -18,9 +18,6 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   #root {
-    display: flex;
     height: 100%;
-    flex-direction: column;
-    align-items: center;
   }
 `;
