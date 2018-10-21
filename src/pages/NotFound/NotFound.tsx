@@ -12,6 +12,8 @@ export function NotFound() {
 }
 
 const Wrapper = styled.div`
+  min-height: 100%;
+  margin: 0 auto;
   text-align: center;
   flex-grow: 1;
   background-color: ${Colors.almostBlack};
