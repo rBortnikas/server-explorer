@@ -42,7 +42,8 @@ export function Servers() {
 }
 
 const Wrapper = styled.div`
-  flex-grow: 1;
+  min-height: 100%;
+  margin: 0 auto;
   padding: 0 36px 36px 36px;
   background-color: ${Colors.almostBlack};
   width: 100%;

@@ -81,8 +81,6 @@ const ToggleWrapper = styled.div`
 `;
 
 const LoaderWrapper = styled.div`
-  display: flex;
-  justify-content: center;
   margin-top: 128px;
 `;
 

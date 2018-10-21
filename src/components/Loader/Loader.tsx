@@ -17,6 +17,7 @@ export function Loader(props: Props) {
 }
 
 const Spinner = styled.div<{ color: Colors; size: Size }>`
+  margin: 0 auto;
   border: solid ${p => (p.size === "small" ? "5px " : "15px ") + p.color};
   border-top: solid ${p => (p.size === "small" ? "5px " : "15px ")} transparent;
   border-radius: 50%;
