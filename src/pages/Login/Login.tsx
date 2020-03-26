@@ -2,11 +2,13 @@ import React from "react";
 import styled from "styled-components";
 
 import { Colors } from "src/style/colors";
+import { TextInputField } from "src/components/TextInputField";
 
 export function Login() {
   return (
     <Wrapper>
       <Logo>server explorer</Logo>
+      <TextInputField name="username" />
     </Wrapper>
   );
 }
@@ -26,4 +28,5 @@ const Logo = styled.h1`
   font-size: 60px;
   font-family: "Nunito", sans-serif;
   margin: 8px 16px;
+  user-select: none;
 `;
