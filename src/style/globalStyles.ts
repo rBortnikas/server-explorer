@@ -11,4 +11,10 @@ export const GlobalStyles = createGlobalStyle`
     color: ${Colors.white};
     font-family: 'Roboto', sans-serif;
   }
+
+  #root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;

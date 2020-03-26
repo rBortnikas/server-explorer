@@ -16,7 +16,6 @@ export function App() {
     <Provider store={store}>
       <GlobalStyles />
       <Router history={history}>
-        <div>hi</div>
         <Switch>
           <Route path={Paths.Root} exact component={Login} />
           <Route path={Paths.Servers} exact component={Servers} />
