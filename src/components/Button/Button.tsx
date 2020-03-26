@@ -6,16 +6,22 @@ import { Colors } from "src/style/colors";
 interface Props {
   onClick?: () => void;
   children: string;
+  fullWidth?: boolean;
 }
 
 export function Button(props: Props) {
-  const { onClick, children } = props;
+  const { onClick, children, fullWidth = false } = props;
 
-  return <StyledButton onClick={onClick}>{children}</StyledButton>;
+  return (
+    <StyledButton onClick={onClick} fullWidth={fullWidth}>
+      {children}
+    </StyledButton>
+  );
 }
 
-const StyledButton = styled.button`
-  height: 36px;
+const StyledButton = styled.button<{ fullWidth: boolean }>`
+  height: 40px;
+  ${props => (props.fullWidth ? `width: 100%` : "")};
   border-radius: 6px;
   background-color: ${Colors.kindaBlue};
   outline: none;
@@ -24,5 +30,8 @@ const StyledButton = styled.button`
   color: ${Colors.white};
   &:focus {
     border: 1px solid ${Colors.focusBlue};
+  }
+  &:hover {
+    background-color: ${Colors.lightBlue};
   }
 `;

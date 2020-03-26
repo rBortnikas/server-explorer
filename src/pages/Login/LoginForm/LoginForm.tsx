@@ -16,9 +16,15 @@ export function LoginForm() {
       <TextInputField name={usernameString} id={usernameString} />
 
       <Label htmlFor={passwordString}>Password</Label>
-      <TextInputField name={passwordString} id={passwordString} />
+      <TextInputField
+        name={passwordString}
+        id={passwordString}
+        type="password"
+      />
 
-      <Button>{"Log In"}</Button>
+      <ButtonWrapper>
+        <Button fullWidth>{"Log In"}</Button>
+      </ButtonWrapper>
     </Form>
   );
 }
@@ -32,4 +38,8 @@ const Form = styled.form`
 const Label = styled.label`
   margin: 16px 0 8px 0;
   font-size: 12px;
+`;
+
+const ButtonWrapper = styled.div`
+  margin-top: 32px;
 `;
