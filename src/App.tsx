@@ -3,6 +3,7 @@ import { Provider } from "react-redux";
 import { Router, Route, Switch } from "react-router";
 
 import { configureStore, history } from "./store";
+import { Paths } from "./paths";
 
 export function App() {
   const store = configureStore();
@@ -12,8 +13,9 @@ export function App() {
       <Router history={history}>
         <div>hi</div>
         <Switch>
-          <Route path="/servers" component={() => <p>servers</p>} />
-          <Route path="/login" component={() => <p>login</p>} />
+          <Route path={Paths.Root} exact component={() => <p>login</p>} />
+          <Route path={Paths.Servers} exact component={() => <p>servers</p>} />
+          <Route path={Paths.Any} component={() => <p>404</p>} />
         </Switch>
       </Router>
     </Provider>
