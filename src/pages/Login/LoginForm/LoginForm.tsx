@@ -1,19 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import { TextInputField } from "src/components/TextInputField";
 import { Button } from "src/components/Button";
+import { Colors } from "src/style/colors";
 
 export function LoginForm() {
+  const [usernameBlankError, setUsernameBlankError] = useState(false);
+  const [passwordBlankError, setPasswordBlankError] = useState(false);
+
   const usernameString = "username";
   const passwordString = "password";
 
-  function handleSubmit() {}
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const username = formData.get(usernameString);
+    const password = formData.get(passwordString);
+
+    if (!username) {
+      setUsernameBlankError(true);
+    }
+    if (!password) {
+      setPasswordBlankError(true);
+    }
+  }
 
   return (
     <Form onSubmit={handleSubmit}>
       <Label htmlFor={usernameString}>Username</Label>
       <TextInputField name={usernameString} id={usernameString} />
+      {usernameBlankError && <ErrorLabel>Username cannot be blank</ErrorLabel>}
 
       <Label htmlFor={passwordString}>Password</Label>
       <TextInputField
@@ -21,6 +39,7 @@ export function LoginForm() {
         id={passwordString}
         type={passwordString}
       />
+      {passwordBlankError && <ErrorLabel>Password cannot be blank</ErrorLabel>}
 
       <ButtonWrapper>
         <Button fullWidth>{"Log In"}</Button>
@@ -42,4 +61,9 @@ const Label = styled.label`
 
 const ButtonWrapper = styled.div`
   margin-top: 32px;
+`;
+
+const ErrorLabel = styled.p`
+  color: ${Colors.dirtyRed};
+  font-size: 12px;
 `;
