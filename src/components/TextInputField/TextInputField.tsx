@@ -7,21 +7,25 @@ interface Props {
   name: string;
   id: string;
   onChange?: () => void;
+  error?: boolean;
 }
 
 export function TextInputField(props: Props) {
-  const { type = "text", name, onChange, id } = props;
-  return <Input type={type} name={name} onChange={onChange} id={id} />;
+  const { type = "text", name, onChange, id, error = false } = props;
+  return (
+    <Input type={type} name={name} onChange={onChange} id={id} error={error} />
+  );
 }
 
-const Input = styled.input`
+const Input = styled.input<{ error: boolean }>`
   height: 36px;
   border-radius: 6px;
   padding-left: 8px;
   outline: none;
   box-shadow: none;
-  border: 1px solid transparent;
+  border: 3px solid ${p => (p.error ? `${Colors.dirtyRed}` : `transparent`)};
+
   &:focus {
-    border: 1px solid ${Colors.focusBlue};
+    border: 3px solid ${Colors.focusBlue};
   }
 `;

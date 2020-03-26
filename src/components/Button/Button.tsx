@@ -21,15 +21,15 @@ export function Button(props: Props) {
 
 const StyledButton = styled.button<{ fullWidth: boolean }>`
   height: 40px;
-  ${props => (props.fullWidth ? `width: 100%` : "")};
+  ${p => (p.fullWidth ? `width: 100%` : "")};
   border-radius: 6px;
   background-color: ${Colors.kindaBlue};
   outline: none;
   box-shadow: none;
-  border: 1px solid transparent;
+  border: 3px solid transparent;
   color: ${Colors.white};
   &:focus {
-    border: 1px solid ${Colors.focusBlue};
+    border: 3px solid ${Colors.focusBlue};
   }
   &:hover {
     background-color: ${Colors.lightBlue};

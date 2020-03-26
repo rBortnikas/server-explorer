@@ -19,7 +19,7 @@ export function LoginForm() {
       <TextInputField
         name={passwordString}
         id={passwordString}
-        type="password"
+        type={passwordString}
       />
 
       <ButtonWrapper>
