@@ -3,6 +3,7 @@ import { Provider } from "react-redux";
 import { Router, Route, Switch } from "react-router";
 
 import { configureStore, history } from "./store";
+import { GlobalStyles } from "./style/globalStyles";
 import { Paths } from "./paths";
 import { Login } from "./pages/Login/Login";
 import { Servers } from "./pages/Servers/Servers";
@@ -13,6 +14,7 @@ export function App() {
 
   return (
     <Provider store={store}>
+      <GlobalStyles />
       <Router history={history}>
         <div>hi</div>
         <Switch>
