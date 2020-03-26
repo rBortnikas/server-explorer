@@ -5,7 +5,7 @@ import { Router, Route, Switch } from "react-router";
 import { configureStore, history } from "./store";
 import { GlobalStyles } from "./style/globalStyles";
 import { Paths } from "src/paths";
-import { Login } from "src/pages/Login/Login";
+import { Login } from "src/pages/Login";
 import { Servers } from "src/pages/Servers/Servers";
 import { NotFound } from "src/pages/NotFound/NotFound";
 

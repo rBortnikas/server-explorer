@@ -2,13 +2,13 @@ import React from "react";
 import styled from "styled-components";
 
 import { Colors } from "src/style/colors";
-import { TextInputField } from "src/components/TextInputField";
+import { LoginForm } from "./LoginForm";
 
 export function Login() {
   return (
     <Wrapper>
       <Logo>server explorer</Logo>
-      <TextInputField name="username" />
+      <LoginForm />
     </Wrapper>
   );
 }
@@ -27,6 +27,6 @@ const Logo = styled.h1`
   width: 300px;
   font-size: 60px;
   font-family: "Nunito", sans-serif;
-  margin: 8px 16px;
+  margin: 8px 0px;
   user-select: none;
 `;
