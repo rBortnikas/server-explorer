@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { TextInputField } from "src/components/TextInputField";
+import { Button } from "src/components/Button";
 
 export function LoginForm() {
   const usernameString = "username";
@@ -17,7 +18,7 @@ export function LoginForm() {
       <Label htmlFor={passwordString}>Password</Label>
       <TextInputField name={passwordString} id={passwordString} />
 
-      <input type="submit" value="Log in"></input>
+      <Button>{"Log In"}</Button>
     </Form>
   );
 }
