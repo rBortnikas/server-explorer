@@ -1,8 +1,10 @@
 import { createStore, combineReducers } from "redux";
-
+import { createBrowserHistory } from "history";
 export interface ReduxState {
   servers: any[];
 }
+
+export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({});
 
