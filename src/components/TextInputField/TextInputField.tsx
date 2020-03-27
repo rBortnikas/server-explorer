@@ -7,11 +7,14 @@ interface Props {
   name: string;
   id: string;
   error?: boolean;
+  onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
 }
 
 export function TextInputField(props: Props) {
-  const { type = "text", name, id, error = false } = props;
-  return <Input type={type} name={name} id={id} error={error} />;
+  const { type = "text", name, id, error = false, onChange } = props;
+  return (
+    <Input type={type} name={name} id={id} error={error} onChange={onChange} />
+  );
 }
 
 const Input = styled.input<{ error: boolean }>`

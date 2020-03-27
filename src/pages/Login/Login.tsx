@@ -5,10 +5,11 @@ import { Colors } from "src/style/colors";
 import { LoginForm } from "./LoginForm";
 
 export function Login() {
+  function onSubmit() {}
   return (
     <Wrapper>
       <Logo>server explorer</Logo>
-      <LoginForm />
+      <LoginForm onSubmit={onSubmit} />
     </Wrapper>
   );
 }

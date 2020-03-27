@@ -5,7 +5,11 @@ import { TextInputField } from "src/components/TextInputField";
 import { Button } from "src/components/Button";
 import { Colors } from "src/style/colors";
 
-export function LoginForm() {
+interface Props {
+  onSubmit: (username: string, password: string) => void;
+}
+
+export function LoginForm({ onSubmit }: Props) {
   const [usernameBlankError, setUsernameBlankError] = useState(false);
   const [passwordBlankError, setPasswordBlankError] = useState(false);
 
@@ -16,6 +20,7 @@ export function LoginForm() {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
+
     const username = formData.get(usernameString);
     const password = formData.get(passwordString);
 
@@ -25,18 +30,39 @@ export function LoginForm() {
     if (!password) {
       setPasswordBlankError(true);
     }
+
+    if (username && password) {
+      onSubmit(username as string, password as string);
+    }
+  }
+
+  function clearError(e: React.FormEvent<HTMLInputElement>) {
+    const target = e.currentTarget.id;
+    if (target === usernameString) {
+      setUsernameBlankError(false);
+    }
+    if (target === passwordString) {
+      setPasswordBlankError(false);
+    }
   }
 
   return (
     <Form onSubmit={handleSubmit}>
       <Label htmlFor={usernameString}>Username</Label>
-      <TextInputField name={usernameString} id={usernameString} />
+      <TextInputField
+        name={usernameString}
+        id={usernameString}
+        error={usernameBlankError}
+        onChange={clearError}
+      />
       {usernameBlankError && <ErrorLabel>Username cannot be blank</ErrorLabel>}
 
       <Label htmlFor={passwordString}>Password</Label>
       <TextInputField
         name={passwordString}
         id={passwordString}
+        error={passwordBlankError}
+        onChange={clearError}
         type={passwordString}
       />
       {passwordBlankError && <ErrorLabel>Password cannot be blank</ErrorLabel>}
