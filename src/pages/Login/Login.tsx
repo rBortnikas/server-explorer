@@ -5,7 +5,9 @@ import { Colors } from "src/style/colors";
 import { LoginForm } from "./LoginForm";
 
 export function Login() {
-  function onSubmit() {}
+  function onSubmit(username: string, password: string) {
+    console.log(username, password);
+  }
   return (
     <Wrapper>
       <Logo>server explorer</Logo>

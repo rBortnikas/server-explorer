@@ -6,14 +6,32 @@ interface Props {
   type?: "text" | "password";
   name: string;
   id: string;
+  value: string;
   error?: boolean;
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
+  autoFocus?: boolean;
 }
 
 export function TextInputField(props: Props) {
-  const { type = "text", name, id, error = false, onChange } = props;
+  const {
+    type = "text",
+    name,
+    id,
+    error = false,
+    onChange,
+    value,
+    autoFocus
+  } = props;
   return (
-    <Input type={type} name={name} id={id} error={error} onChange={onChange} />
+    <Input
+      type={type}
+      name={name}
+      id={id}
+      error={error}
+      onChange={onChange}
+      value={value}
+      autoFocus={autoFocus}
+    />
   );
 }
 

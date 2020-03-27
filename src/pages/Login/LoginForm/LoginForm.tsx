@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Formik, FormikErrors } from "formik";
 
 import { TextInputField } from "src/components/TextInputField";
 import { Button } from "src/components/Button";
@@ -9,68 +10,77 @@ interface Props {
   onSubmit: (username: string, password: string) => void;
 }
 
-export function LoginForm({ onSubmit }: Props) {
-  const [usernameBlankError, setUsernameBlankError] = useState(false);
-  const [passwordBlankError, setPasswordBlankError] = useState(false);
+interface FormValues {
+  username: string;
+  password: string;
+}
 
+export function LoginForm({ onSubmit }: Props) {
   const usernameString = "username";
   const passwordString = "password";
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
-    const formData = new FormData(e.currentTarget);
-
-    const username = formData.get(usernameString);
-    const password = formData.get(passwordString);
-
-    if (!username) {
-      setUsernameBlankError(true);
-    }
-    if (!password) {
-      setPasswordBlankError(true);
-    }
+  function handleSubmit({ username, password }: FormValues) {
+    // e.preventDefault();
 
     if (username && password) {
-      onSubmit(username as string, password as string);
+      onSubmit(username, password);
     }
   }
 
-  function clearError(e: React.FormEvent<HTMLInputElement>) {
-    const target = e.currentTarget.id;
-    if (target === usernameString) {
-      setUsernameBlankError(false);
-    }
-    if (target === passwordString) {
-      setPasswordBlankError(false);
-    }
-  }
+  const initialValues: FormValues = {
+    username: "",
+    password: ""
+  };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Label htmlFor={usernameString}>Username</Label>
-      <TextInputField
-        name={usernameString}
-        id={usernameString}
-        error={usernameBlankError}
-        onChange={clearError}
-      />
-      {usernameBlankError && <ErrorLabel>Username cannot be blank</ErrorLabel>}
+    <Formik
+      initialValues={initialValues}
+      onSubmit={values => handleSubmit(values)}
+      validate={values => {
+        const errors: FormikErrors<FormValues> = {};
+        if (!values.username) {
+          errors.username = "Username cannot be blank";
+        }
+        if (!values.password) {
+          errors.password = "Password cannot be blank";
+        }
+        return errors;
+      }}
+    >
+      {p => (
+        <Form onSubmit={p.handleSubmit}>
+          <Label htmlFor={usernameString}>Username</Label>
+          <TextInputField
+            name={usernameString}
+            id={usernameString}
+            // error={usernameBlankError}
+            value={p.values.username}
+            onChange={p.handleChange}
+            autoFocus
+          />
+          {p.errors.username && p.touched.username && (
+            <ErrorLabel>{p.errors.username}</ErrorLabel>
+          )}
 
-      <Label htmlFor={passwordString}>Password</Label>
-      <TextInputField
-        name={passwordString}
-        id={passwordString}
-        error={passwordBlankError}
-        onChange={clearError}
-        type={passwordString}
-      />
-      {passwordBlankError && <ErrorLabel>Password cannot be blank</ErrorLabel>}
+          <Label htmlFor={passwordString}>Password</Label>
+          <TextInputField
+            name={passwordString}
+            id={passwordString}
+            // error={passwordBlankError}
+            onChange={p.handleChange}
+            type={passwordString}
+            value={p.values.password}
+          />
+          {p.errors.password && p.touched.username && (
+            <ErrorLabel>{p.errors.password}</ErrorLabel>
+          )}
 
-      <ButtonWrapper>
-        <Button fullWidth>{"Log In"}</Button>
-      </ButtonWrapper>
-    </Form>
+          <ButtonWrapper>
+            <Button fullWidth>{"Log In"}</Button>
+          </ButtonWrapper>
+        </Form>
+      )}
+    </Formik>
   );
 }
 
