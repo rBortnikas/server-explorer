@@ -35,6 +35,7 @@ export function TextInputField(props: Props) {
         onChange={onChange}
         value={value}
         autoFocus={autoFocus}
+        data-testid={`${name}-input`}
       />
       {error && <ErrorLabel>{error}</ErrorLabel>}
     </>
