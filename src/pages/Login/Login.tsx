@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 
 import { Colors } from "src/style/colors";
-import { LoginForm } from "./LoginForm";
+import { LoginForm, FormValues } from "./LoginForm";
 
 export function Login() {
-  function onSubmit(username: string, password: string) {
-    console.log(username, password);
+  function onSubmit({ username, password }: FormValues) {
+    console.log(username, password, "yhaaa");
   }
   return (
     <Wrapper>

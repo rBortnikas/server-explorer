@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Formik, FormikErrors } from "formik";
 
 import { TextInputField } from "src/components/TextInputField";
 import { Button } from "src/components/Button";
-import { Colors } from "src/style/colors";
 
 interface Props {
-  onSubmit: (username: string, password: string) => void;
+  onSubmit: ({ username, password }: FormValues) => void;
 }
 
-interface FormValues {
+export interface FormValues {
   username: string;
   password: string;
 }
@@ -18,14 +17,6 @@ interface FormValues {
 export function LoginForm({ onSubmit }: Props) {
   const usernameString = "username";
   const passwordString = "password";
-
-  function handleSubmit({ username, password }: FormValues) {
-    // e.preventDefault();
-
-    if (username && password) {
-      onSubmit(username, password);
-    }
-  }
 
   const initialValues: FormValues = {
     username: "",
@@ -35,7 +26,7 @@ export function LoginForm({ onSubmit }: Props) {
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={values => handleSubmit(values)}
+      onSubmit={values => onSubmit(values)}
       validate={values => {
         const errors: FormikErrors<FormValues> = {};
         if (!values.username) {
@@ -49,31 +40,25 @@ export function LoginForm({ onSubmit }: Props) {
     >
       {p => (
         <Form onSubmit={p.handleSubmit}>
-          <Label htmlFor={usernameString}>Username</Label>
           <TextInputField
             name={usernameString}
             id={usernameString}
-            // error={usernameBlankError}
             value={p.values.username}
             onChange={p.handleChange}
             autoFocus
+            label="Username"
+            error={p.touched.username && p.errors.username}
           />
-          {p.errors.username && p.touched.username && (
-            <ErrorLabel>{p.errors.username}</ErrorLabel>
-          )}
 
-          <Label htmlFor={passwordString}>Password</Label>
           <TextInputField
             name={passwordString}
             id={passwordString}
-            // error={passwordBlankError}
             onChange={p.handleChange}
             type={passwordString}
             value={p.values.password}
+            label="Password"
+            error={p.touched.password && p.errors.password}
           />
-          {p.errors.password && p.touched.username && (
-            <ErrorLabel>{p.errors.password}</ErrorLabel>
-          )}
 
           <ButtonWrapper>
             <Button fullWidth>{"Log In"}</Button>
@@ -90,16 +75,6 @@ const Form = styled.form`
   flex-direction: column;
 `;
 
-const Label = styled.label`
-  margin: 16px 0 8px 0;
-  font-size: 12px;
-`;
-
 const ButtonWrapper = styled.div`
   margin-top: 32px;
-`;
-
-const ErrorLabel = styled.p`
-  color: ${Colors.dirtyRed};
-  font-size: 12px;
 `;

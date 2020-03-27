@@ -7,9 +7,10 @@ interface Props {
   name: string;
   id: string;
   value: string;
-  error?: boolean;
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
   autoFocus?: boolean;
+  label?: string;
+  error?: boolean | string;
 }
 
 export function TextInputField(props: Props) {
@@ -17,21 +18,26 @@ export function TextInputField(props: Props) {
     type = "text",
     name,
     id,
-    error = false,
     onChange,
     value,
-    autoFocus
+    autoFocus,
+    label,
+    error
   } = props;
   return (
-    <Input
-      type={type}
-      name={name}
-      id={id}
-      error={error}
-      onChange={onChange}
-      value={value}
-      autoFocus={autoFocus}
-    />
+    <>
+      {label && <Label htmlFor={id}>{label}</Label>}
+      <Input
+        type={type}
+        name={name}
+        id={id}
+        error={!!error}
+        onChange={onChange}
+        value={value}
+        autoFocus={autoFocus}
+      />
+      {error && <ErrorLabel>{error}</ErrorLabel>}
+    </>
   );
 }
 
@@ -46,4 +52,14 @@ const Input = styled.input<{ error: boolean }>`
   &:focus {
     border: 3px solid ${Colors.focusBlue};
   }
+`;
+
+const Label = styled.label`
+  margin: 16px 0 8px 0;
+  font-size: 12px;
+`;
+
+const ErrorLabel = styled.p`
+  color: ${Colors.dirtyRed};
+  font-size: 12px;
 `;
