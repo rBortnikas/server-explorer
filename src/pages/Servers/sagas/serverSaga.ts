@@ -14,6 +14,7 @@ function* fetchServers() {
     const token = AuthService.getAuthToken();
     if (token) {
       const servers = yield call(ServerService.fetchServers, token);
+      console.log({ servers });
       yield put(Actions.fetchServersSuccess(servers));
     } else {
       history.push(Paths.Root);

@@ -3,10 +3,15 @@ import { Colors } from "./colors";
 import { normalize } from "styled-normalize";
 
 export const GlobalStyles = createGlobalStyle`
-    ${normalize}
+  ${normalize}
+
+  html {
+    height: 100%;
+  }
 
   body {
     min-width: 320px;
+    height: 100%;
     background-color: ${Colors.lightGrey};
     color: ${Colors.white};
     font-family: 'Roboto', sans-serif;
@@ -14,6 +19,7 @@ export const GlobalStyles = createGlobalStyle`
 
   #root {
     display: flex;
+    height: 100%;
     flex-direction: column;
     align-items: center;
   }
