@@ -16,8 +16,8 @@ export class AuthService {
   }
 
   public static async login(credentials: Credentials) {
-    const { token } = await this.authenticate(credentials);
-    this.storeAuthToken(token);
+    const { token } = await AuthService.authenticate(credentials);
+    AuthService.storeAuthToken(token);
   }
 
   private static storeAuthToken(token: string) {

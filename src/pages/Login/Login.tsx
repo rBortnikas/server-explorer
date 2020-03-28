@@ -3,21 +3,14 @@ import styled from "styled-components";
 import { useDispatch } from "react-redux";
 
 import { Colors } from "src/style/colors";
-import { AuthService } from "src/api/authService/AuthService";
-import { ServerService } from "src/api/ServerService";
 import { LoginForm, FormValues } from "./LoginForm";
-import { Actions } from "src/pages/Servers/actions/serversActions";
+import { Actions } from "src/api/authService/actions";
 
 export function Login() {
   const dispatch = useDispatch();
 
   async function onSubmit(credentials: FormValues) {
-    await AuthService.login(credentials);
-    const token = AuthService.getAuthToken();
-    // @ts-ignore
-    const servers = await ServerService.fetchServers(token);
-    dispatch(Actions.setServers(servers));
-    console.log({ servers });
+    dispatch(Actions.login(credentials));
   }
   return (
     <Wrapper>
