@@ -5,13 +5,12 @@ import { Formik, FormikErrors } from "formik";
 import { TextInputField } from "src/components/TextInputField";
 import { Button } from "src/components/Button";
 
-interface Props {
-  onSubmit: ({ username, password }: FormValues) => void;
-}
-
 export interface FormValues {
   username: string;
   password: string;
+}
+interface Props {
+  onSubmit: ({ username, password }: FormValues) => void;
 }
 
 export function LoginForm({ onSubmit }: Props) {

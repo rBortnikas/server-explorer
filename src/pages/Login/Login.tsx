@@ -2,11 +2,15 @@ import React from "react";
 import styled from "styled-components";
 
 import { Colors } from "src/style/colors";
+import { AuthService } from "src/api/AuthService";
+import { ServerService } from "src/api/ServerService";
 import { LoginForm, FormValues } from "./LoginForm";
 
 export function Login() {
-  function onSubmit({ username, password }: FormValues) {
-    console.log(username, password, "yhaaa");
+  async function onSubmit(credentials: FormValues) {
+    const { token } = await AuthService.authenticate(credentials);
+    const servers = await ServerService.fetchServers(token);
+    console.log({ servers });
   }
   return (
     <Wrapper>
