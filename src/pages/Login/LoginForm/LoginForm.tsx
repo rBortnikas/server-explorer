@@ -59,7 +59,9 @@ export function LoginForm({ onSubmit }: Props) {
           />
 
           <ButtonWrapper>
-            <Button fullWidth>{"Log In"}</Button>
+            <Button type="submit" fullWidth>
+              {"Log In"}
+            </Button>
           </ButtonWrapper>
         </Form>
       )}

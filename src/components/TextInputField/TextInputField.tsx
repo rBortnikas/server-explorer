@@ -7,7 +7,7 @@ interface Props {
   name: string;
   id: string;
   value: string;
-  onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   autoFocus?: boolean;
   label?: string;
   error?: boolean | string;

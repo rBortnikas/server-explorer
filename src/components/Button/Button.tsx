@@ -7,13 +7,14 @@ interface Props {
   onClick?: () => void;
   children: string;
   fullWidth?: boolean;
+  type?: "submit" | "reset" | "button";
 }
 
 export function Button(props: Props) {
-  const { onClick, children, fullWidth = false } = props;
+  const { onClick, children, fullWidth = false, type = "button" } = props;
 
   return (
-    <StyledButton onClick={onClick} fullWidth={fullWidth}>
+    <StyledButton onClick={onClick} fullWidth={fullWidth} type={type}>
       {children}
     </StyledButton>
   );
