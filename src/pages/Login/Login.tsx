@@ -8,7 +8,8 @@ import { LoginForm, FormValues } from "./LoginForm";
 
 export function Login() {
   async function onSubmit(credentials: FormValues) {
-    const { token } = await AuthService.authenticate(credentials);
+    await AuthService.login(credentials);
+    const token = AuthService.getAuthToken();
     const servers = await ServerService.fetchServers(token);
     console.log({ servers });
   }

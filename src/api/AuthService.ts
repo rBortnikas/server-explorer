@@ -1,11 +1,13 @@
 import { API } from "./API";
 import { handleResponse } from "./utils";
 
+interface Credentials {
+  username: string;
+  password: string;
+}
 export class AuthService {
-  public static async authenticate(credentials: {
-    username: string;
-    password: string;
-  }) {
+  private static async authenticate(credentials: Credentials) {
+    // might not need to be public and/or static
     const response = await fetch(API.authentication, {
       method: "POST",
       body: JSON.stringify(credentials),
@@ -15,5 +17,22 @@ export class AuthService {
     });
 
     return await handleResponse(response);
+  }
+
+  public static async login(credentials: Credentials) {
+    const { token } = await this.authenticate(credentials);
+    this.storeAuthToken(token);
+  }
+
+  private static storeAuthToken(token: string) {
+    window.localStorage.setItem("authToken", token);
+  }
+
+  public static getAuthToken() {
+    return window.localStorage.getItem("authToken");
+  }
+
+  public static logout() {
+    window.localStorage.removeItem("authToken");
   }
 }
