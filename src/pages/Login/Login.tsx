@@ -1,22 +1,23 @@
 import React from "react";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Colors } from "src/style/colors";
 import { Logo } from "src/components/Logo";
 import { LoginForm, FormValues } from "./LoginForm";
 import { Actions } from "src/api/authService/actions";
+import { ReduxState } from "src/store";
 
 export function Login() {
   const dispatch = useDispatch();
-
+  const isLoading = useSelector((state: ReduxState) => state.auth.isLoggingIn);
   async function onSubmit(credentials: FormValues) {
     dispatch(Actions.login(credentials));
   }
   return (
     <Wrapper>
       <Logo />
-      <LoginForm onSubmit={onSubmit} />
+      <LoginForm onSubmit={onSubmit} isLoading={isLoading} />
     </Wrapper>
   );
 }

@@ -4,6 +4,7 @@ import { Formik, FormikErrors } from "formik";
 
 import { TextInputField } from "src/components/TextInputField";
 import { Button } from "src/components/Button";
+import { Loader } from "src/components/Loader";
 
 export interface FormValues {
   username: string;
@@ -11,9 +12,10 @@ export interface FormValues {
 }
 interface Props {
   onSubmit: ({ username, password }: FormValues) => void;
+  isLoading: boolean;
 }
 
-export function LoginForm({ onSubmit }: Props) {
+export function LoginForm({ onSubmit, isLoading }: Props) {
   const usernameString = "username";
   const passwordString = "password";
   const initialValues: FormValues = {
@@ -60,7 +62,7 @@ export function LoginForm({ onSubmit }: Props) {
 
           <ButtonWrapper>
             <Button type="submit" fullWidth>
-              {"Log In"}
+              {isLoading ? <Loader /> : "Log in"}
             </Button>
           </ButtonWrapper>
         </Form>

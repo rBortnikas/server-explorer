@@ -1,11 +1,11 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import styled from "styled-components";
 
 import { Colors } from "src/style/colors";
 
 interface Props {
   onClick?: () => void;
-  children: string;
+  children: string | ReactElement;
   fullWidth?: boolean;
   type?: "submit" | "reset" | "button";
 }
@@ -29,6 +29,9 @@ const StyledButton = styled.button<{ fullWidth: boolean }>`
   box-shadow: none;
   border: 3px solid transparent;
   color: ${Colors.white};
+  display: flex;
+  justify-content: center;
+
   &:focus {
     border: 3px solid ${Colors.focusBlue};
   }
