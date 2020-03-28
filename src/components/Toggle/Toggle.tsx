@@ -8,7 +8,7 @@ interface Props {
   secondOptionLabel: string;
   firstOptionId: string;
   secondOptionId: string;
-  onChange: (optionID: string) => void;
+  onClick: (optionID: string) => void;
   selectedOptionId: string;
 }
 
@@ -19,16 +19,16 @@ export function Toggle(props: Props) {
     secondOptionLabel,
     firstOptionId,
     secondOptionId,
-    onChange,
+    onClick,
     selectedOptionId
   } = props;
 
   function handleClick(optionId: string) {
-    onChange(optionId);
+    onClick(optionId);
   }
   return (
     <Wrapper>
-      <ToggleText>{toggleText}: </ToggleText>
+      <ToggleText>{toggleText}:</ToggleText>
       <OptionText
         id={firstOptionId}
         selected={firstOptionId === selectedOptionId}
@@ -53,12 +53,13 @@ const Wrapper = styled.div`
 `;
 
 const ToggleText = styled.div`
+  cursor: default;
   color: ${Colors.white};
 `;
 
 const OptionText = styled.div<{ selected: boolean }>`
-  margin: 0 8px;
-  color: ${p => (p.selected ? Colors.white : Colors.lightGrey)};
+  cursor: pointer;
+  margin: 0 0 8px 16px;
+  color: ${p => (p.selected ? Colors.white : Colors.darkerGrey)};
   ${p => p.selected && `border-bottom: 2px solid ${Colors.white}`};
-  ${p => p.selected && "font-weight: 700"};
 `;
