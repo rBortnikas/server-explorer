@@ -30,8 +30,9 @@ function configureStore() {
   const sagaMiddleware = createSagaMiddleware();
 
   const devTools =
-    (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
-    (window as any).__REDUX_DEVTOOLS_EXTENSION__();
+    ((window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
+      (window as any).__REDUX_DEVTOOLS_EXTENSION__()) ||
+    compose;
 
   const enhancer = compose(applyMiddleware(sagaMiddleware), devTools);
 
