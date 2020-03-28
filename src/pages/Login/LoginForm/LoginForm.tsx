@@ -17,8 +17,8 @@ export function LoginForm({ onSubmit }: Props) {
   const usernameString = "username";
   const passwordString = "password";
   const initialValues: FormValues = {
-    username: "",
-    password: ""
+    username: "tesonet",
+    password: "partyanimal"
   };
 
   return (

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useDispatch } from "react-redux";
 
 import { Colors } from "src/style/colors";
-import { AuthService } from "src/api/AuthService";
+import { AuthService } from "src/api/authService/AuthService";
 import { ServerService } from "src/api/ServerService";
 import { LoginForm, FormValues } from "./LoginForm";
 import { Actions } from "src/pages/Servers/actions/serversActions";

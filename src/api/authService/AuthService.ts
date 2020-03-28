@@ -1,13 +1,9 @@
-import { API } from "./API";
-import { handleResponse } from "./utils";
+import { API } from "../API";
+import { handleResponse } from "../utils";
+import { Credentials } from "./types";
 
-interface Credentials {
-  username: string;
-  password: string;
-}
 export class AuthService {
   private static async authenticate(credentials: Credentials) {
-    // might not need to be public and/or static
     const response = await fetch(API.authentication, {
       method: "POST",
       body: JSON.stringify(credentials),
