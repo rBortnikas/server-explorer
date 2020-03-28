@@ -18,6 +18,7 @@ function* fetchServers() {
       yield put(Actions.fetchServersSuccess(servers));
     } else {
       history.push(Paths.Root);
+      yield put(Actions.fetchServersFail());
     }
   } catch (e) {
     console.log(e);

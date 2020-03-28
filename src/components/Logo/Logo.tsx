@@ -5,10 +5,10 @@ export function Logo() {
   return <Text>server explorer</Text>;
 }
 
-const Text = styled.h1`
+const Text = styled.div`
   width: 300px;
   font-size: 60px;
   font-family: "Nunito", sans-serif;
-  margin: 8px 0px;
+  margin-bottom: 8px;
   user-select: none;
 `;
