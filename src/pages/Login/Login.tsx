@@ -10,6 +10,7 @@ export function Login() {
   async function onSubmit(credentials: FormValues) {
     await AuthService.login(credentials);
     const token = AuthService.getAuthToken();
+    // @ts-ignore
     const servers = await ServerService.fetchServers(token);
     console.log({ servers });
   }
