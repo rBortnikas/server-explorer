@@ -6,9 +6,12 @@ import createSagaMiddleware from "redux-saga";
 import { serversReducer } from "src/pages/Servers/reducers/serversReducer";
 import { authReducer } from "src/api/authService/reducer";
 import { authSagas } from "src/api/authService/saga";
+import { serverSagas } from "src/pages/Servers/sagas/serverSaga";
+import { AuthState } from "src/api/authService/types";
+import { ServersState } from "src/pages/Servers/types";
 export interface ReduxState {
-  servers: any[];
-  auth: any;
+  servers: ServersState;
+  auth: AuthState;
 }
 
 export const history = createBrowserHistory();
@@ -20,9 +23,10 @@ const rootReducer = combineReducers({
 
 function* rootSaga() {
   yield fork(authSagas);
+  yield fork(serverSagas);
 }
 
-export function configureStore(initialState?: ReduxState) {
+function configureStore() {
   const sagaMiddleware = createSagaMiddleware();
 
   const devTools =
@@ -31,8 +35,10 @@ export function configureStore(initialState?: ReduxState) {
 
   const enhancer = compose(applyMiddleware(sagaMiddleware), devTools);
 
-  const store = createStore(rootReducer, initialState, enhancer);
+  const store = createStore(rootReducer, undefined, enhancer);
 
   sagaMiddleware.run(rootSaga);
   return store;
 }
+
+export const store = configureStore();

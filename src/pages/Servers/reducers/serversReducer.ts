@@ -1,14 +1,21 @@
 import { AnyAction } from "redux";
-import { ActionTypes } from "../actions/serversActions";
-import { Server } from "../types";
+import { ActionTypes as AT } from "../actions/serversActions";
 
-const initialState: Server[] = [];
+const initialState = {
+  servers: [],
+  isFetching: false,
+  fetchError: false
+};
 
 export function serversReducer(state = initialState, action: AnyAction) {
   switch (action.type) {
-    case ActionTypes.SetServers:
-      return [...action.servers];
-    case ActionTypes.ClearServers:
+    case AT.FetchServers:
+      return { ...initialState, isFetching: true };
+    case AT.FetchServersSuccess:
+      return { ...initialState, servers: [...action.servers] };
+    case AT.FetchServersFail:
+      return { ...initialState, fetchError: true };
+    case AT.ClearServers:
       return initialState;
     default:
       return state;

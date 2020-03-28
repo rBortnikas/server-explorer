@@ -1,18 +1,30 @@
 import { Server } from "../types";
 
 export enum ActionTypes {
-  SetServers = "Set Servers",
-  ClearServers = "Clear Servers"
+  FetchServers = "Fetch servers",
+  FetchServersSuccess = "Fetch servers success",
+  FetchServersFail = "Fetch servers fail",
+  ClearServers = "Clear servers"
 }
 
-const setServers = (servers: Server[]) => ({
-  type: ActionTypes.SetServers,
+const fetchServers = () => ({
+  type: ActionTypes.FetchServers
+});
+
+const fetchServersSuccess = (servers: Server[]) => ({
+  type: ActionTypes.FetchServersSuccess,
   servers
+});
+
+const fetchServersFail = () => ({
+  type: ActionTypes.FetchServersFail
 });
 
 const clearServers = () => ({ type: ActionTypes.ClearServers });
 
 export const Actions = {
-  setServers,
+  fetchServers,
+  fetchServersSuccess,
+  fetchServersFail,
   clearServers
 };
