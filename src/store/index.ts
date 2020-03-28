@@ -13,5 +13,10 @@ const rootReducer = combineReducers({
 });
 
 export function configureStore(initialState?: ReduxState) {
-  return createStore(rootReducer, initialState);
+  return createStore(
+    rootReducer,
+    initialState,
+    (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
+      (window as any).__REDUX_DEVTOOLS_EXTENSION__()
+  );
 }
