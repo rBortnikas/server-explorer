@@ -23,11 +23,18 @@ export function Login() {
 }
 
 const Wrapper = styled.div`
+  position: absolute;
   padding: 36px;
-  width: 400px;
-  /* min-width: 320px; */
-  height: 600px;
-  border-bottom-left-radius: 50px;
-  border-bottom-right-radius: 50px;
+  width: 100%;
   background-color: ${Colors.almostBlack};
+  min-height: 100%;
+  box-sizing: border-box;
+
+  @media (min-width: 480px) {
+    min-height: initial;
+    width: 400px;
+    height: 600px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+  }
 `;

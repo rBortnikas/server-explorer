@@ -6,7 +6,6 @@ export function Logo() {
 }
 
 const Text = styled.div`
-  width: 300px;
   font-size: 60px;
   font-family: "Nunito", sans-serif;
   margin-bottom: 8px;

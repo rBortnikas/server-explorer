@@ -11,7 +11,6 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    /* min-width: 320px; */
     height: 100%;
     background-color: ${Colors.lightGrey};
     color: ${Colors.white};
