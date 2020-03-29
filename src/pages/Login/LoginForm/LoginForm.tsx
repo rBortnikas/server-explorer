@@ -5,7 +5,7 @@ import { Formik, FormikErrors } from "formik";
 import { TextInputField } from "src/components/TextInputField";
 import { Button } from "src/components/Button";
 import { Loader } from "src/components/Loader";
-
+import { ErrorLabel } from "./ErrorLabel";
 export interface FormValues {
   username: string;
   password: string;
@@ -13,14 +13,15 @@ export interface FormValues {
 interface Props {
   onSubmit: ({ username, password }: FormValues) => void;
   isLoading: boolean;
+  loginError: any;
 }
 
-export function LoginForm({ onSubmit, isLoading }: Props) {
+export function LoginForm({ onSubmit, isLoading, loginError }: Props) {
   const usernameString = "username";
   const passwordString = "password";
   const initialValues: FormValues = {
-    username: "tesonet",
-    password: "partyanimal"
+    username: "",
+    password: ""
   };
 
   return (
@@ -59,7 +60,7 @@ export function LoginForm({ onSubmit, isLoading }: Props) {
             label="Password"
             error={p.touched.password && p.errors.password}
           />
-
+          <ErrorLabel loginError={loginError} />
           <ButtonWrapper>
             <Button type="submit" fullWidth>
               {isLoading ? <Loader /> : "Log in"}

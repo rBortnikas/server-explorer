@@ -6,12 +6,12 @@ describe("LoginForm", () => {
   test("submits with both inputs filled in and returns credentials", async () => {
     const onSubmit = jest.fn();
     const { getByText, getByTestId } = render(
-      <LoginForm onSubmit={onSubmit} />
+      <LoginForm onSubmit={onSubmit} isLoading={false} loginError={undefined} />
     );
 
     const usernameInput = getByTestId("username-input");
     const passwordInput = getByTestId("password-input");
-    const loginButton = getByText("Log In");
+    const loginButton = getByText("Log in");
 
     const mockUsername = "mockUsername";
     const mockPassword = "mockPassword";
@@ -34,15 +34,14 @@ describe("LoginForm", () => {
     });
   });
 
-  describe("error handling", async () => {});
   test("does not submit with a missing input and displays the correct error", async () => {
     const onSubmit = jest.fn();
     const { queryByText, getByText, getByTestId } = render(
-      <LoginForm onSubmit={onSubmit} />
+      <LoginForm onSubmit={onSubmit} isLoading={false} loginError={undefined} />
     );
 
     const usernameInput = getByTestId("username-input");
-    const loginButton = getByText("Log In");
+    const loginButton = getByText("Log in");
     const mockUsername = "mockUsername";
 
     await wait(() => {

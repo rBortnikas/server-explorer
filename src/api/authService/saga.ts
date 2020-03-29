@@ -15,8 +15,7 @@ function* login(action: ReturnType<typeof Actions.login>) {
     yield put(Actions.loginSuccess());
     history.push(Paths.Servers);
   } catch (e) {
-    console.log(e);
-    yield put(Actions.loginFail());
+    yield put(Actions.loginFail(e));
   }
 }
 

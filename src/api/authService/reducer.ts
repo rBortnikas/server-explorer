@@ -3,7 +3,7 @@ import { ActionTypes } from "./actions";
 
 const initialState = {
   isLoggingIn: false,
-  loginError: false
+  loginError: undefined
 };
 
 export function authReducer(state = initialState, action: AnyAction) {
@@ -13,7 +13,7 @@ export function authReducer(state = initialState, action: AnyAction) {
     case ActionTypes.LoginSuccess:
       return initialState;
     case ActionTypes.LoginFail:
-      return { ...initialState, loginError: true };
+      return { ...initialState, loginError: action.error };
     case ActionTypes.Logout:
       return initialState;
     default:

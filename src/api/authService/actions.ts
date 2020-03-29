@@ -14,7 +14,7 @@ const login = (credentials: Credentials) => ({
 
 const loginSuccess = () => ({ type: ActionTypes.LoginSuccess });
 
-const loginFail = () => ({ type: ActionTypes.LoginFail });
+const loginFail = (error: any) => ({ type: ActionTypes.LoginFail, error });
 
 const logout = () => ({ type: ActionTypes.Logout });
 

@@ -11,13 +11,19 @@ import { ReduxState } from "src/store";
 export function Login() {
   const dispatch = useDispatch();
   const isLoading = useSelector((state: ReduxState) => state.auth.isLoggingIn);
+  const loginError = useSelector((state: ReduxState) => state.auth.loginError);
+
   async function onSubmit(credentials: FormValues) {
     dispatch(Actions.login(credentials));
   }
   return (
     <Wrapper>
       <Logo />
-      <LoginForm onSubmit={onSubmit} isLoading={isLoading} />
+      <LoginForm
+        onSubmit={onSubmit}
+        isLoading={isLoading}
+        loginError={loginError}
+      />
     </Wrapper>
   );
 }
