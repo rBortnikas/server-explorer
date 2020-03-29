@@ -13,6 +13,7 @@ import { Colors } from "src/style/colors";
 interface Props {
   servers: Server[];
   isLoading: boolean;
+  error: boolean;
 }
 
 const ToggleOptions = {
@@ -20,7 +21,7 @@ const ToggleOptions = {
   distance: "distance"
 };
 
-export function ServerTable({ servers = [], isLoading }: Props) {
+export function ServerTable({ servers = [], isLoading, error }: Props) {
   const [sortedServers, setSortedServers] = useState(servers);
   const [sortBy, setSortBy] = useState(ToggleOptions.name);
   const [sortOrderAscending, setSortOrderAscending] = useState(true);
@@ -66,6 +67,7 @@ export function ServerTable({ servers = [], isLoading }: Props) {
       ) : (
         <Table servers={sortedServers} />
       )}
+      {error && <Error>Cannot access the server list right now.</Error>}
     </Wrapper>
   );
 }
@@ -82,4 +84,9 @@ const LoaderWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 128px;
+`;
+
+const Error = styled.div`
+  margin-top: 128px;
+  text-align: center;
 `;

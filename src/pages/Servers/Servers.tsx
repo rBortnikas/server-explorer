@@ -20,6 +20,7 @@ export function Servers() {
   const isFetching = useSelector(
     (state: ReduxState) => state.servers.isFetching
   );
+  const error = useSelector((state: ReduxState) => state.servers.fetchError);
 
   function logout() {
     dispatch(AuthActions.logout());
@@ -35,7 +36,7 @@ export function Servers() {
           </Button>
         </ButtonWrapper>
       </TopWrapper>
-      <ServerTable servers={servers} isLoading={isFetching} />
+      <ServerTable servers={servers} isLoading={isFetching} error={error} />
     </Wrapper>
   );
 }
