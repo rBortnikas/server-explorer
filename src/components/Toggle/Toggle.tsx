@@ -57,8 +57,12 @@ const ToggleText = styled.div`
   color: ${Colors.white};
 `;
 
-const OptionText = styled.div<{ selected: boolean }>`
+const OptionText = styled.button<{ selected: boolean }>`
   cursor: pointer;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  background-color: transparent;
   margin: 0 0 8px 16px;
   color: ${p => (p.selected ? Colors.white : Colors.darkerGrey)};
   ${p => p.selected && `border-bottom: 2px solid ${Colors.white}`};

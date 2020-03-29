@@ -44,7 +44,7 @@ const Wrapper = styled.div`
   flex-grow: 1;
   padding: 0 36px 36px 36px;
   background-color: ${Colors.almostBlack};
-  max-width: 800px;
+  width: 100%;
   box-sizing: border-box;
 
   @media (min-width: 800px) {
@@ -59,5 +59,5 @@ const TopWrapper = styled.div`
 
 const ButtonWrapper = styled.div`
   margin-top: 16px;
-  width: 120px;
+  width: 90px;
 `;

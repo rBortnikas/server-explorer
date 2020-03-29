@@ -6,9 +6,14 @@ export function Logo() {
 }
 
 const Text = styled.div`
-  max-width: 300px;
-  font-size: 60px;
+  max-width: 200px;
+  font-size: 40px;
   font-family: "Nunito", sans-serif;
   margin-bottom: 8px;
   user-select: none;
+
+  @media (min-width: 480px) {
+    font-size: 60px;
+    max-width: 300px;
+  }
 `;
