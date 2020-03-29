@@ -12,8 +12,8 @@ export function Table({ servers }: Props) {
     <Wrapper>
       {servers?.map(server => (
         <ServerLine key={server.name + server.distance}>
-          <div>{server.name}</div>
-          <div>{server.distance} km</div>
+          <div data-testid="server-name">{server.name}</div>
+          <div data-testid="server-distance">{server.distance} km</div>
         </ServerLine>
       ))}
     </Wrapper>
