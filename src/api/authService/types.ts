@@ -5,5 +5,5 @@ export interface Credentials {
 
 export interface AuthState {
   isLoggingIn: boolean;
-  loginError: boolean;
+  loginError: any;
 }
