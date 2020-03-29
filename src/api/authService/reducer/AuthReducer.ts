@@ -1,5 +1,5 @@
 import { AnyAction } from "redux";
-import { ActionTypes } from "./actions";
+import { ActionTypes } from "../actions";
 
 const initialState = {
   isLoggingIn: false,

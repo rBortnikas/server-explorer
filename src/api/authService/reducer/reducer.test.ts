@@ -1,6 +1,6 @@
-import { authReducer } from "./reducer";
+import { authReducer } from "./AuthReducer";
 import { AuthState } from "src/api/authService/types";
-import { Actions } from "./actions";
+import { Actions } from "../actions";
 import { FetchErrors } from "src/api/utils";
 
 describe("authService reducer", () => {
