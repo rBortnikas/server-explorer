@@ -1,5 +1,5 @@
 import { AnyAction } from "redux";
-import { ActionTypes as AT } from "./Actions";
+import { ActionTypes as AT } from "../actions";
 
 const initialState = {
   servers: [],
