@@ -1,5 +1,5 @@
-import { API } from "./API";
-import { handleResponse } from "./utils";
+import { API } from "../API";
+import { handleResponse } from "../utils";
 
 export class ServerService {
   public static async fetchServers(token: string) {

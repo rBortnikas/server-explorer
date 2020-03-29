@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { Actions, ActionTypes } from "../actions/serversActions";
+import { Actions, ActionTypes } from "./Actions";
 import { AuthService } from "src/api/authService/AuthService";
-import { ServerService } from "src/api/ServerService";
+import { ServerService } from "src/api/ServerService/ServerService";
 import { history } from "src/store/index";
 import { Paths } from "src/paths";
 

@@ -5,7 +5,7 @@ import { ReduxState } from "src/store/index";
 import { Colors } from "src/style/colors";
 import { Logo } from "src/components/Logo";
 import { ServerTable } from "./ServerTable";
-import { Actions } from "src/pages/Servers/actions/serversActions";
+import { Actions } from "src/api/ServerService/Actions";
 import { Actions as AuthActions } from "src/api/authService/actions";
 import { Button } from "src/components/Button";
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Server } from "src/pages/Servers/types";
+import { Server } from "src/api/ServerService/types";
 import { Table } from "./Table";
 import { Toggle } from "src/components/Toggle";
 import { Loader } from "src/components/Loader";

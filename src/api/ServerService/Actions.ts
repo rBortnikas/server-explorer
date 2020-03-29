@@ -1,4 +1,4 @@
-import { Server } from "../types";
+import { Server } from "./types";
 
 export enum ActionTypes {
   FetchServers = "Fetch servers",

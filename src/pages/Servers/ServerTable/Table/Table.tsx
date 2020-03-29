@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Server } from "src/pages/Servers/types";
+import { Server } from "src/api/ServerService/types";
 import { Colors } from "src/style/colors";
 
 interface Props {

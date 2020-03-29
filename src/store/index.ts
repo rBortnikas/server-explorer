@@ -3,12 +3,12 @@ import { createBrowserHistory } from "history";
 import { fork } from "@redux-saga/core/effects";
 import createSagaMiddleware from "redux-saga";
 
-import { serversReducer } from "src/pages/Servers/reducers/serversReducer";
+import { serversReducer } from "src/api/ServerService/reducer";
 import { authReducer } from "src/api/authService/reducer";
 import { authSagas } from "src/api/authService/saga";
-import { serverSagas } from "src/pages/Servers/sagas/serverSaga";
+import { serverSagas } from "src/api/ServerService/saga";
 import { AuthState } from "src/api/authService/types";
-import { ServersState } from "src/pages/Servers/types";
+import { ServersState } from "src/api/ServerService/types";
 export interface ReduxState {
   servers: ServersState;
   auth: AuthState;
