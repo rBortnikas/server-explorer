@@ -1,6 +1,7 @@
 import React from "react";
 import { render, fireEvent, wait } from "@testing-library/react";
 import { LoginForm } from "./LoginForm";
+import { FetchErrors } from "src/api/utils";
 
 describe("LoginForm", () => {
   test("submits with both inputs filled in and returns credentials", async () => {
@@ -57,5 +58,19 @@ describe("LoginForm", () => {
     expect(onSubmit).toHaveBeenCalledTimes(0);
     expect(passwordErrorLabel).toBeTruthy();
     expect(usernameErrorLabel).toBeNull();
+  });
+
+  test("shows the correct login error when unauthorized", async () => {
+    const { getByText } = render(
+      <LoginForm
+        onSubmit={() => {}}
+        isLoading={false}
+        loginError={FetchErrors.Unauthorized}
+      />
+    );
+
+    const error = getByText("Please check your login details and try again.");
+
+    expect(error).toBeTruthy();
   });
 });
