@@ -17,7 +17,7 @@ export function ErrorLabel({ loginError }: Props) {
     <Label>
       {loginError === FetchErrors.Unauthorized
         ? "Please check your login details and try again."
-        : "Something went wront, please try again later."}
+        : "Something went wrong, please try again later."}
     </Label>
   );
 }
