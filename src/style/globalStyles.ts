@@ -7,10 +7,11 @@ export const GlobalStyles = createGlobalStyle`
 
   html {
     height: 100%;
+    margin: 0;
   }
 
   body {
-    min-width: 320px;
+    /* min-width: 320px; */
     height: 100%;
     background-color: ${Colors.lightGrey};
     color: ${Colors.white};

@@ -3,12 +3,16 @@ import styled from "styled-components";
 import { Server } from "src/pages/Servers/types";
 import { Table } from "./Table";
 import { Toggle } from "src/components/Toggle";
+import { Loader } from "src/components/Loader";
 import {
   sortByObjectStringProp,
   sortByObjectNumberProp
 } from "src/utils/sortingUtils";
+import { Colors } from "src/style/colors";
+
 interface Props {
-  servers?: Server[];
+  servers: Server[];
+  isLoading: boolean;
 }
 
 const ToggleOptions = {
@@ -16,7 +20,7 @@ const ToggleOptions = {
   distance: "distance"
 };
 
-export function ServerTable({ servers = [] }: Props) {
+export function ServerTable({ servers = [], isLoading }: Props) {
   const [sortedServers, setSortedServers] = useState(servers);
   const [sortBy, setSortBy] = useState(ToggleOptions.name);
   const [sortOrderAscending, setSortOrderAscending] = useState(true);
@@ -55,7 +59,13 @@ export function ServerTable({ servers = [] }: Props) {
           onClick={handleClick}
         />
       </ToggleWrapper>
-      <Table servers={sortedServers} />
+      {isLoading ? (
+        <LoaderWrapper>
+          <Loader size="big" color={Colors.lightGrey} />
+        </LoaderWrapper>
+      ) : (
+        <Table servers={sortedServers} />
+      )}
     </Wrapper>
   );
 }
@@ -66,4 +76,10 @@ const Wrapper = styled.div`
 `;
 const ToggleWrapper = styled.div`
   align-self: flex-end;
+`;
+
+const LoaderWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 128px;
 `;

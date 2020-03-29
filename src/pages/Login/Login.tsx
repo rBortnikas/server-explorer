@@ -25,7 +25,7 @@ export function Login() {
 const Wrapper = styled.div`
   padding: 36px;
   width: 400px;
-  min-width: 320px;
+  /* min-width: 320px; */
   height: 600px;
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;

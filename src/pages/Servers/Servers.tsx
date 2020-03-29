@@ -17,6 +17,9 @@ export function Servers() {
   }, [dispatch]);
 
   const servers = useSelector((state: ReduxState) => state.servers.servers);
+  const isFetching = useSelector(
+    (state: ReduxState) => state.servers.isFetching
+  );
 
   function logout() {
     dispatch(AuthActions.logout());
@@ -30,15 +33,15 @@ export function Servers() {
           <Button onClick={logout}>Log out</Button>
         </ButtonWrapper>
       </TopWrapper>
-      <ServerTable servers={servers} />
+      <ServerTable servers={servers} isLoading={isFetching} />
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
+  flex-grow: 1;
   padding: 0 36px 36px 36px;
   width: 800px;
-  min-width: 320px;
   background-color: ${Colors.almostBlack};
 `;
 
