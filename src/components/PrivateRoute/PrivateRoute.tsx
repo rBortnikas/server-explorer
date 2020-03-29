@@ -4,7 +4,7 @@ import { AuthService } from "src/api/authService/AuthService";
 import { Paths } from "src/paths";
 
 export function PrivateRoute(props: RouteProps) {
-  if (AuthService.getAuthToken()) {
+  if (AuthService.isLoggedIn) {
     return <Route {...props} />;
   }
   return <Redirect to={Paths.Root} />;

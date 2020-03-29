@@ -28,6 +28,10 @@ export class AuthService {
     return window.localStorage.getItem("authToken");
   }
 
+  public static get isLoggedIn() {
+    return !!AuthService.getAuthToken();
+  }
+
   public static logout() {
     window.localStorage.removeItem("authToken");
   }

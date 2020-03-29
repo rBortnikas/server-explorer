@@ -7,15 +7,23 @@ import { Logo } from "src/components/Logo";
 import { LoginForm, FormValues } from "./LoginForm";
 import { Actions } from "src/api/authService/actions";
 import { ReduxState } from "src/store";
+import { AuthService } from "src/api/authService/AuthService";
+import { Paths } from "src/paths";
+import { Redirect } from "react-router-dom";
 
 export function Login() {
   const dispatch = useDispatch();
   const isLoading = useSelector((state: ReduxState) => state.auth.isLoggingIn);
   const loginError = useSelector((state: ReduxState) => state.auth.loginError);
 
-  async function onSubmit(credentials: FormValues) {
+  function onSubmit(credentials: FormValues) {
     dispatch(Actions.login(credentials));
   }
+
+  if (AuthService.isLoggedIn) {
+    return <Redirect to={Paths.Servers} />;
+  }
+
   return (
     <Wrapper>
       <Logo />

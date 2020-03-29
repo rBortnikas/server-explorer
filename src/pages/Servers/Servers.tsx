@@ -12,9 +12,10 @@ import { Button } from "src/components/Button";
 export function Servers() {
   const dispatch = useDispatch();
 
+  /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     dispatch(Actions.fetchServers());
-  }, [dispatch]);
+  }, []);
 
   const servers = useSelector((state: ReduxState) => state.servers.servers);
   const isFetching = useSelector(
