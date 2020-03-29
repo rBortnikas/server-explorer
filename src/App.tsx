@@ -1,8 +1,9 @@
 import React from "react";
+import { Store } from "redux";
 import { Provider } from "react-redux";
 import { Router, Route, Switch } from "react-router";
+import { History } from "history";
 
-import { store, history } from "./store";
 import { GlobalStyles } from "./style/globalStyles";
 import { Paths } from "src/paths";
 import { PrivateRoute } from "src/components/PrivateRoute";
@@ -10,7 +11,12 @@ import { Login } from "src/pages/Login";
 import { Servers } from "src/pages/Servers/Servers";
 import { NotFound } from "src/pages/NotFound/NotFound";
 
-export function App() {
+interface Dependencies {
+  store: Store;
+  history: History;
+}
+
+export function App({ store, history }: Dependencies) {
   return (
     <Provider store={store}>
       <GlobalStyles />

@@ -60,7 +60,7 @@ describe("LoginForm", () => {
     expect(usernameErrorLabel).toBeNull();
   });
 
-  test("shows the correct login error when unauthorized", async () => {
+  test("shows the correct login error when unauthorized", () => {
     const { getByText } = render(
       <LoginForm
         onSubmit={() => {}}
