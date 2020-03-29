@@ -1,7 +1,8 @@
 import { AnyAction } from "redux";
 import { ActionTypes } from "../actions";
+import { AuthState } from "src/api/authService/types";
 
-const initialState = {
+const initialState: AuthState = {
   isLoggingIn: false,
   loginError: undefined
 };

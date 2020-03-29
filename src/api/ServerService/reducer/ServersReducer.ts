@@ -1,7 +1,8 @@
 import { AnyAction } from "redux";
+import { ServersState } from "../types";
 import { ActionTypes as AT } from "../actions";
 
-const initialState = {
+const initialState: ServersState = {
   servers: [],
   isFetching: false,
   fetchError: false
