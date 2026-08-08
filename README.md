@@ -1,6 +1,7 @@
 ## Server explorer
 
 Live version can be found [here](http://server-explorer.surge.sh).
+Inspiration taken from [Little Promises](https://littlepromises.app/).
 
 Install dependencies: `npm install`.  
 Run dev build on localhost:3000: `npm start`.
